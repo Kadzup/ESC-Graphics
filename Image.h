@@ -42,7 +42,7 @@ public:
 	 RGB color for Line
 	 */
     void DrawLine(const Point& begin, const Point& end, const RGBColor& color);
-   
+    void DrawLine(const int64_t& x1, const int64_t& y1, const int64_t& x2, const int64_t& y2, const RGBColor& color);
     /*
      Draw Circle on current Image
 	 using center Point coordinates

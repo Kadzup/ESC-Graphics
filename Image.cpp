@@ -77,6 +77,26 @@ void Image::SetPixel(const Point& point, const RGBColor& color, bool ignore_err 
     buffer[point.y][point.x] = color;
 }
 
+void Image::DrawLine(const int64_t& x1, const int64_t& y1, const int64_t& x2, const int64_t& y2, const RGBColor& color)
+{
+    if (abs(y2 - y1) < abs(x2 - x1)) {
+        if (x1 > x2) {
+            DrawLineLow(x2, y2, x1, y1, color);
+        }
+        else {
+            DrawLineLow(x1, y1, x2, y2, color);
+        }
+    }
+    else {
+        if (y1 > y2) {
+            DrawLineHigh(x2, y2, x1, y1, color);
+        }
+        else {
+            DrawLineHigh(x1, y1, x2, y2, color);
+        }
+    }
+}
+
 void Image::DrawLine(const Point& begin, const Point& end, const RGBColor& color)
 {
     if (abs(end.y - begin.y) < abs(end.x - begin.x)) {
